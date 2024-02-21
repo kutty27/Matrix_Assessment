@@ -53,6 +53,8 @@ jobs:
             animal: cat
       runs-on: ubuntu latest
       steps:
-        - name: output
-          run: ${{matrix.fruit}} ${{matrix.animal}} ${{matrix.color}}
+      - name: output
+        run: ${{matrix.fruit}} ${{matrix.animal}} ${{matrix.color}}
+      
+          
         
