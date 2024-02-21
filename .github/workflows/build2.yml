@@ -7,54 +7,38 @@ on:
 
 jobs:
   Matrix-Startegy:
-    # strategy:
-    #   matrix:
-    #     java_version: [17,18]
-    #     os: ['ubuntu-latest', 'macos-latest', 'windows-latest']
-    #     include:
-    #       - step_name: 'Compile Vehicle Project'
-    #         java_version: 17
-    #         os: ubuntu-latest
-    #       - step_name: 'Test maven project'
-    #         java_version: 18
-    #         os: windows-latest
-    # runs-on: ${{matrix.os}}
-    # steps:
-    #   - name: Check out code
-    #     uses: actions/checkout@v2
-
-    #   - name: Set up JDK
-    #     uses: actions/setup-java@v2
-    #     with:
-    #       distribution: 'adopt'
-    #       java-version: ${{matrix.java_version}}
-
-    #   - name: ${{matrix.step_name}}
-    #     run: |
-    #       cd Vehicle
-    #       javac *.java
-
-    #   - name: ${{matrix.step_name}}
-    #     run: |
-    #       cd Maven
-    #       mvn test
     strategy:
       matrix:
-        fruit: [apple, pear]
-        animal: [cat, dog]
+        java_version: [17,18]
+        os: ['ubuntu-latest', 'macos-latest', 'windows-latest']
         include:
-          - color: green
-          - color: pink
-            animal: cat
-          - fruit: apple
-            shape: circle
-          - fruit: banana
-          - fruit: banana
-            animal: cat
-      runs-on: ubuntu latest
-      steps:
-      - name: output
-        run: ${{matrix.fruit}} ${{matrix.animal}} ${{matrix.color}}
+          - os: ubuntu-latest
+            java_version: 18
+          - os: windows-latest
+            java_version: 17
+          - os: macos-latest
+            java_version: 18
+    runs-on: ${{matrix.os}}
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: ${{matrix.java_version}}
+
+      - name: Compile Vehicle project
+        run: |
+          cd Vehicle
+          javac *.java
+
+      - name: Test Maven Project
+        run: |
+          cd Maven
+          mvn test
+   
       
           
         
