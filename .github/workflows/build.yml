@@ -24,8 +24,13 @@ jobs:
           java-version: ${{matrix.java_version}}
 
       - name: Compile Vehicle Project
-        run: javac *.java
+        run: |
+          cd Vehicle
+          javac *.java
 
       - name: Test maven project
-        run: mvn test
+        run: |
+          cd ..
+          cd Maven
+          mvn test
         
