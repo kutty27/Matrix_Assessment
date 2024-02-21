@@ -1,4 +1,4 @@
-name: Matrix workflowv-2 
+name: Matrix include and exclude
 
 on:
   push:
