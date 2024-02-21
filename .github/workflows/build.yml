@@ -30,7 +30,6 @@ jobs:
 
       - name: Test maven project
         run: |
-          cd ..
           cd Maven
           mvn test
         
