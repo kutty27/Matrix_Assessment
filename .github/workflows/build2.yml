@@ -12,12 +12,13 @@ jobs:
         java_version: [17,18]
         os: ['ubuntu-latest', 'macos-latest', 'windows-latest']
         include:
-          - os: ubuntu-latest
+          - color: red
+            os: ubuntu-latest
             java_version: 18
-          - os: windows-latest
+          - color: pink
+            os: windows-latest
             java_version: 17
-          - os: macos-latest
-            java_version: 18
+          
     runs-on: ${{matrix.os}}
     steps:
       - name: Check out code
